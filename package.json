@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/11-book-app/book-list-server#readme",
   "dependencies": {
+    "cors": "^2.8.4",
     "express": "^4.16.3",
     "pg": "^7.4.1"
   },

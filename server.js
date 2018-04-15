@@ -2,26 +2,31 @@
 
 const pg = require('pg');
 const fs = require('fs');
+const cors = require('cors');
 const express = require('express');
 const PORT = process.env.PORT || 3000;
 const app = express();
 const DATABASE_URL = process.env.DATABASE_URL;
+const CLIENT_URL = process.env.CLIENT_URL;
 const client = new pg.Client(DATABASE_URL);
 client.connect();
 client.on('error', err => {
 console.error(err);
 });
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('../book-list-client'));
 
 loadDB();
 
-app.get('/test', (req,res) => {
+app.get('/books', (req,res) => {
   client.query(`SELECT * FROM books;`)
   .then(results => res.send(results.rows));
 });
+
+app.get('*', (req, res) => res.redirect(CLIENT_URL));
 
 app.listen(PORT, () => console.log('Server started on port', PORT));
 
