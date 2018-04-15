@@ -17,17 +17,18 @@ console.error(err);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(express.static('../book-list-client'));
+// app.use(express.static('../book-list-client'));
 
 loadDB();
+
 
 app.get('/books', (req,res) => {
   client.query(`SELECT * FROM books;`)
   .then(results => res.send(results.rows));
 });
 
-app.get('*', (req, res) => res.redirect(CLIENT_URL));
 
+app.get('*', (req, res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log('Server started on port', PORT));
 
 function loadBooks() {
