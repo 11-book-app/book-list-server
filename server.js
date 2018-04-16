@@ -14,9 +14,7 @@ client.on('error', err => {
 console.error(err);
 });
 
-var allowedOrigins = ['http://localhost:3000', 'https://11-book-app.github.io/'];
-
-
+var allowedOrigins = ['http://localhost:3000', '*'];
 
 app.use(cors({
   origin: function(origin, callback) {
