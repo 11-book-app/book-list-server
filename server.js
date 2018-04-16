@@ -14,7 +14,7 @@ client.on('error', err => {
 console.error(err);
 });
 
-app.use(cors({origin: '*'}))
+app.use(cors({origin: 'https://11-book-app.github.io/book-list-client/'}));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 // app.use(express.static('../book-list-client'));
