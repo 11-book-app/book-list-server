@@ -14,7 +14,7 @@ client.on('error', err => {
 console.error(err);
 });
 
-var allowedOrigins = ['http://localhost:3000','https://kh-booklist.herokuapp.com/books'];
+var allowedOrigins = ['http://localhost:3000','', 'https://11-book-app.github.io/book-list-client/'];
 
 
 
