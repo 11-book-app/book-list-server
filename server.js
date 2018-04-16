@@ -14,7 +14,20 @@ client.on('error', err => {
 console.error(err);
 });
 
-app.use(cors());
+var allowedOrigins = ['http://localhost:3000','https://kh-booklist.herokuapp.com/books'];
+
+
+
+app.use(cors({
+  origin: function(origin, callback) {
+    if(!origin) return callback(null, true);
+
+    if(allowedOrigins.indexOf(origin) === -1) {
+      var msg ='The CORs policy for this site does not allow access from the specified origin.';
+      return callback(new Error(msg), false);
+    }
+  }
+}));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 // app.use(express.static('../book-list-client'));
