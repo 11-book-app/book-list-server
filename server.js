@@ -14,7 +14,7 @@ client.on('error', err => {
 console.error(err);
 });
 
-var allowedOrigins = ['http://localhost:3000', 'https://11-boosk-app.github.io/book-list-client/'];
+var allowedOrigins = ['http://localhost:3000', 'https://11-book-app.github.io/'];
 
 
 
