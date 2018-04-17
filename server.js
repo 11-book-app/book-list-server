@@ -22,8 +22,8 @@ app.use(express.urlencoded({extended: true}));
 loadDB();
 
 
-app.get('/books', (req,res) => {
-  client.query(`SELECT * FROM books;`)
+app.get('/api/v1/books', (req,res) => {
+  client.query(`SELECT book_id, title, author, image_url FROM books;`)
   .then(results => res.send(results.rows));
 });
 
